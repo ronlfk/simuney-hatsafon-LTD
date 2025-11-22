@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simuney Hatsafon | Game Studio</title>
+  <meta name="description" content="Simuney Hatsafon - Independent game studio. Privacy Policy and Terms of Use.">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.06);
+      --card-strong: rgba(255,255,255,0.10);
+      --text: #e8ecf3;
+      --muted: #b9c2d3;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --good: #34d399;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      font-synthesis: style;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 90% -10%, #1b2a6b 0%, transparent 60%),
+        radial-gradient(900px 500px at 0% 10%, #3a1463 0%, transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(to right, rgba(11,16,32,0.95), rgba(11,16,32,0.7));
+      border-bottom:1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .container{max-width:1050px; margin:0 auto; padding:18px 18px;}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:0.3px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: conic-gradient(from 210deg, var(--accent), var(--accent-2), var(--accent));
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15);
+    }
+    .nav-links{
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:12px; border:1px solid var(--border);
+      background: var(--card); color:var(--text); cursor:pointer;
+      transition: 0.2s ease; box-shadow: 0 0 0 rgba(0,0,0,0);
+      font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px); background:var(--card-strong); box-shadow:var(--shadow)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(125,211,252,0.17), rgba(167,139,250,0.18));
+      border-color: rgba(125,211,252,0.5);
+    }
+
+    /* Hero */
+    .hero{
+      padding:44px 0 26px;
+      display:grid; grid-template-columns: 1.2fr 0.8fr; gap:16px;
+      align-items:center;
+    }
+    .hero-card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:26px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:13px; color:var(--muted);
+      background: rgba(52,211,153,0.12);
+      border:1px solid rgba(52,211,153,0.35);
+      padding:6px 10px; border-radius:999px; font-weight:700;
+    }
+    h1{margin:12px 0 8px; font-size:34px; line-height:1.2;}
+    .sub{color:var(--muted); font-size:16px; margin-bottom:14px;}
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+    .stats{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px;
+    }
+    .stat{
+      background: rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:14px; padding:12px;
+      font-size:14px; color:var(--muted);
+    }
+    .stat b{display:block; color:var(--text); font-size:18px; margin-bottom:2px;}
+
+    .hero-side{
+      background: radial-gradient(500px 300px at 30% 20%, rgba(125,211,252,0.18), transparent 60%),
+                  radial-gradient(400px 260px at 70% 70%, rgba(167,139,250,0.2), transparent 60%),
+                  var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:22px;
+      min-height:220px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      box-shadow: var(--shadow);
+    }
+    .pill{
+      font-size:12px; color:var(--muted);
+      padding:6px 8px; border-radius:999px;
+      background: rgba(255,255,255,0.07); display:inline-block;
+      border:1px dashed var(--border);
+    }
+
+    /* Sections */
+    .section{
+      margin:18px 0 40px;
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    .section h2{margin-top:0; font-size:22px;}
+    .muted{color:var(--muted)}
+    ul{margin:8px 0 0 0; padding-left:18px;}
+    .kicker{
+      font-weight:800; margin-top:14px; font-size:15px;
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);
+      background: rgba(0,0,0,0.2);
+    }
+    .footer-flex{
+      display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+      font-size:14px; color:var(--muted);
+    }
+
+    /* Routing */
+    .page{display:none;}
+    .page.active{display:block;}
+
+    /* Mobile */
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr; padding-top:26px;}
+      h1{font-size:28px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <div style="font-size:16px;">Simuney Hatsafon</div>
+        <div style="font-size:12px; color:var(--muted);">Game Studio</div>
+      </div>
+    </div>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a class="btn" href="#/" data-route="/">Home</a>
+      <a class="btn" href="#/privacy" data-route="privacy">Privacy Policy</a>
+      <a class="btn" href="#/terms" data-route="terms">Terms of Use</a>
+      <a class="btn primary" href="mailto:banayanofer@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HOME -->
+  <section id="page-home" class="page active" data-page="/">
+    <div class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">🎮 Independent Game Studio</div>
+        <h1>Welcome to Simuney Hatsafon</h1>
+        <p class="sub">
+          We are a small game studio with a big passion for building fun, accessible, and fair mobile games.
+          Our focus is on clean user experiences and respectful data practices.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#/privacy" data-route="privacy">Privacy Policy</a>
+          <a class="btn" href="#/terms" data-route="terms">Terms of Use</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <b>Focus</b>
+            Mobile & Casual games
+          </div>
+          <div class="stat">
+            <b>Values</b>
+            Fairness, privacy, fun
+          </div>
+          <div class="stat">
+            <b>Support</b>
+            <a href="mailto:banayanofer@gmail.com">banayanofer@gmail.com</a>
+          </div>
+          <div class="stat">
+            <b>Community</b>
+            We love feedback
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div>
+          <div class="pill">Our Mission</div>
+          <h3 style="margin:10px 0 6px;">Build safe and joyful play</h3>
+          <p class="muted" style="margin-top:0;">
+            A great game is one that players can enjoy again and again —
+            without tricks and without unnecessary data collection.
+          </p>
+        </div>
+        <div class="pill">Last updated: 22 Nov 2025</div>
+      </aside>
+    </div>
+
+    <section class="section">
+      <h2>About the Studio</h2>
+      <p>
+        Simuney Hatsafon is an independent game studio that creates and maintains mobile games for a broad audience.
+        We take privacy seriously and aim to keep our policies simple, transparent, and fair.
+      </p>
+      <p class="muted">
+        For any questions regarding privacy or terms, contact:
+        <a href="mailto:banayanofer@gmail.com">banayanofer@gmail.com</a>
+      </p>
+    </section>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section id="page-privacy" class="page" data-page="privacy">
+    <section class="section">
+      <h2>Privacy Policy</h2>
+      <p class="muted">This Privacy Policy applies to games and apps published by Simuney Hatsafon.</p>
+
+      <div class="kicker">1. Who We Are</div>
+      <p>
+        Simuney Hatsafon ("we", "our", "us") operates mobile games and applications.
+        If you have any privacy questions, contact us at:
+        <a href="mailto:banayanofer@gmail.com">banayanofer@gmail.com</a>.
+      </p>
+
+      <div class="kicker">2. Information We Collect</div>
+      <p>We aim to collect the minimum data needed to run and improve the game:</p>
+      <ul>
+        <li><b>Basic technical data:</b> device type, OS version, language, and anonymous installation identifiers for stability and functionality.</li>
+        <li><b>Anonymous usage events:</b> broad in-game events (e.g., screen or level opens) to improve user experience.</li>
+      </ul>
+      <p class="muted">
+        We do not knowingly collect personally identifiable information such as full name, precise address, or phone number.
+      </p>
+
+      <div class="kicker">3. Ads & Third-Party Services</div>
+      <p>
+        Some of our games may include ads or analytics provided by third parties
+        (for example Google AdMob, Firebase Analytics, or similar services).
+        These partners may collect data according to their own policies.
+      </p>
+      <p class="muted">We do not sell personal information.</p>
+
+      <div class="kicker">4. How We Use Information</div>
+      <ul>
+        <li>To operate the game and fix bugs or crashes.</li>
+        <li>To improve gameplay, balancing, and content.</li>
+        <li>To measure performance in an anonymous, aggregated way.</li>
+      </ul>
+
+      <div class="kicker">5. Children</div>
+      <p>
+        Our games are intended for a general audience.
+        If a parent or guardian believes that a child has provided personal data by mistake,
+        please contact us and we will delete it promptly.
+      </p>
+
+      <div class="kicker">6. Data Retention & Security</div>
+      <p>
+        We keep information only as long as needed for the purposes described above,
+        and we apply reasonable safeguards to protect it.
+      </p>
+
+      <div class="kicker">7. Your Rights</div>
+      <p>
+        You may contact us to ask about, correct, or request deletion of your data,
+        or to object to non-essential processing.
+      </p>
+
+      <div class="kicker">8. Changes to This Policy</div>
+      <p>
+        We may update this Privacy Policy from time to time.
+        The latest version will always be available on this page.
+      </p>
+
+      <hr style="border-color:var(--border); margin:18px 0;">
+      <p class="muted"><b>Last updated:</b> 22 Nov 2025</p>
+
+      <div style="margin-top:10px;">
+        <a class="btn" href="#/" data-route="/">Back to Home</a>
+      </div>
+    </section>
+  </section>
+
+  <!-- TERMS OF USE -->
+  <section id="page-terms" class="page" data-page="terms">
+    <section class="section">
+      <h2>Terms of Use</h2>
+      <p class="muted">These Terms of Use apply to all games/apps published by Simuney Hatsafon.</p>
+
+      <div class="kicker">1. Acceptance of Terms</div>
+      <p>
+        By downloading, accessing, or using our game, you agree to these Terms.
+        If you do not agree, please do not use the game.
+      </p>
+
+      <div class="kicker">2. License</div>
+      <p>
+        We grant you a personal, limited, non-exclusive, non-transferable license
+        to use the game for private, non-commercial purposes.
+      </p>
+
+      <div class="kicker">3. Prohibited Use</div>
+      <ul>
+        <li>No reverse engineering, decompiling, or attempts to access source code.</li>
+        <li>No bots, cheats, exploits, or actions that harm game balance.</li>
+        <li>No infringement of copyrights, trademarks, or third-party rights.</li>
+      </ul>
+
+      <div class="kicker">4. Digital Goods & In-App Purchases</div>
+      <p>
+        If in-app purchases are offered, they are optional.
+        All payments are handled by the app store (Google Play / App Store)
+        and are subject to their refund policies.
+      </p>
+
+      <div class="kicker">5. Third-Party Content</div>
+      <p>
+        The game may display content, links, or ads from third parties.
+        We are not responsible for third-party content or policies.
+      </p>
+
+      <div class="kicker">6. Disclaimer & Limitation of Liability</div>
+      <p>
+        The game is provided “AS IS”.
+        We do not guarantee uninterrupted availability, error-free operation,
+        or fitness for a particular purpose.
+        To the maximum extent permitted by law, we are not liable for indirect or consequential damages.
+      </p>
+
+      <div class="kicker">7. Termination</div>
+      <p>
+        We may suspend or terminate access to the game if you violate these Terms
+        or use the game in a harmful way.
+      </p>
+
+      <div class="kicker">8. Governing Law</div>
+      <p>
+        These Terms are governed by the laws of the State of Israel,
+        and exclusive jurisdiction lies with the competent courts in Israel.
+      </p>
+
+      <div class="kicker">9. Contact</div>
+      <p>
+        If you have any questions about these Terms, contact:
+        <a href="mailto:banayanofer@gmail.com">banayanofer@gmail.com</a>
+      </p>
+
+      <hr style="border-color:var(--border); margin:18px 0;">
+      <p class="muted"><b>Last updated:</b> 22 Nov 2025</p>
+
+      <div style="margin-top:10px;">
+        <a class="btn" href="#/" data-route="/">Back to Home</a>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-flex">
+    <div>© <span id="year"></span> Simuney Hatsafon. All rights reserved.</div>
+    <div class="muted">
+      <a href="#/privacy" data-route="privacy">Privacy Policy</a> ·
+      <a href="#/terms" data-route="terms">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple hash router (single-file site)
+  const pages = [...document.querySelectorAll(".page")];
+  const navLinks = [...document.querySelectorAll("[data-route]")];
+
+  function setActive(route){
+    pages.forEach(p => p.classList.remove("active"));
+    const target = pages.find(p => p.dataset.page === route) || pages.find(p => p.dataset.page === "/");
+    target.classList.add("active");
+
+    navLinks.forEach(a=>{
+      const isActive = a.dataset.route === route || (route === "/" && a.dataset.route === "/");
+      a.style.borderColor = isActive ? "rgba(125,211,252,0.7)" : "var(--border)";
+      a.style.background = isActive ? "linear-gradient(135deg, rgba(125,211,252,0.14), rgba(167,139,250,0.14))" : "";
+    });
+
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function parseRoute(){
+    const hash = location.hash || "#/";
+    const route = hash.replace("#/","") || "/";
+    return route;
+  }
+
+  window.addEventListener("hashchange", () => setActive(parseRoute()));
+  setActive(parseRoute());
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+
